@@ -108,3 +108,10 @@ function bootModels(app) {
 function bootControllers(app,dp) {
   require(path + '/controllers/AppController')(app);			// Include core router  
 }
+
+// allow normal node loading if appropriate
+if (!module.parent) {
+  exports.boot().listen(3000);
+  console.log("Express server %s listening on port %d", express.version, app.address().port)
+}
+
